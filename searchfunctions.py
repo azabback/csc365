@@ -34,14 +34,11 @@ def grade_gpa_avg_search(df: pd.DataFrame, grade_in: int):
 
 
 def teacher_search(data: pd.DataFrame, tlastname: str):
-  df_students = data[data["TLastName"] == tlastname]
-  # df_students = data[['lastname','firstname']].where(data['TLastName']== tlastname).dropna()
-  for i in range(len(df_students)):
-    list_students = df_students[["lastname", "firstname"]].values[i]
-    students = ""
-    for i in list_students:
-      students += str(i) + ","
-    students = students[:-1]
-    print(students)
+    df_students = data[data["TLastName"] == tlastname]
+    res_str = ""
+    for i in range(0, len(df_students)):
+        res_str += df_students.iloc[i]["StLastName"] + ", " + \
+                   df_students.iloc[i]["StFirstName"] + "\n"
+        print(res_str.strip())
 
 
